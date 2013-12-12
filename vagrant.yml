@@ -1,0 +1,11 @@
+# Used for provisioning the Vagrant test host.  This lets us build our Ansible playbooks without the need to run them against a Real Boy host
+---
+ - hosts: all
+   user: vagrant
+   sudo: yes
+   tasks:
+    - include: tasks/toolbelt.yml
+    - include: tasks/nginx.yml
+   handlers:
+    - include: handlers.yml
+

@@ -1,0 +1,7 @@
+---
+# Install common tools that I'm always going to want
+  - name: install toolbelt
+    apt: pkg=$item state=present update_cache=yes
+    with_items:
+      - vim
+

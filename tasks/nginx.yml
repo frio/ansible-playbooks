@@ -1,0 +1,16 @@
+---
+# Install and fire up nginx
+  - name: enable ppa management
+    apt: pkg=python-software-properties state=present
+  - name: add nginx ppa
+    apt_repository: repo='ppa:nginx/stable' state=present
+  - name: enable universe repository
+    apt_repository: repo=$item state=present
+    with_items:
+      - 'deb http://nz.archive.ubuntu.com/ubuntu/ precise universe'
+      - 'deb http://nz.archive.ubuntu.com/ubuntu/ precise-updates universe'
+  - name: install nginx
+    apt: pkg=nginx state=present
+  - name: enable nginx service
+    service: enabled=yes name=nginx state=started
+
